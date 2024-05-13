@@ -19,7 +19,10 @@
     <div id="root">
       <div id="text">1</div>
     </div>
-    <button id="button">진행하기</button>
+    <button id="button" onclick="location.href = './menu.html'">
+      진행하기
+    </button>
+    <!-- 지난번에 사용한 onclick 방식으로도 제대로 작동되지 않음 -->
     <script>
       const root = document.getElementById("root");
       const text = document.getElementById("text");
@@ -27,9 +30,9 @@
       root.addEventListener("click", () => {
         text.style.display = "block";
       });
-      button.addEventListener("click", () => {
-        window.location.href = "./menu.html";
-      });
+      // button.addEventListener("click", () => {
+      //   window.location.href = "./menu.html";
+      // });
     </script>
   </body>
 </html>
