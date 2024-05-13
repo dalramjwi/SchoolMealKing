@@ -1,0 +1,11 @@
+{
+  "name": "schoolmealking",
+  "version": "1.0.0",
+  "description": "function practice",
+  "main": "root.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dalramjwi",
+  "license": "ISC"
+}

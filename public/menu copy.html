@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="menu.css" />
+  </head>
+  <body>
+    <div id="root">
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>2.2</th>
+              <th>2.3</th>
+              <th>2.4</th>
+              <th>2.5</th>
+              <th>2.6</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="3">메뉴</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>한식</th>
+              <th>양식</th>
+              <th>후식</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <label for="fish">
+                  <input
+                    type="checkbox"
+                    name="ko"
+                    id="fish"
+                    value="고등어 구이"
+                  />
+                  고등어 구이
+                </label>
+              </td>
+
+              <td>
+                <label for="salad">
+                  <input type="checkbox" name="en" id="salad" value="샐러드" />
+                  샐러드
+                </label>
+              </td>
+
+              <td>
+                <label for="riceCake">
+                  <input type="checkbox" name="sw" id="riceCake" value="떡" />
+                  떡
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="kimchi">
+                  <input
+                    type="checkbox"
+                    name="ko"
+                    id="kimchi"
+                    value="김치찌개"
+                  />
+                  김치찌개
+                </label>
+              </td>
+
+              <td>
+                <label for="soup">
+                  <input type="checkbox" name="en" id="soup" value="스프" />
+                  스프
+                </label>
+              </td>
+
+              <td>
+                <label for="bread">
+                  <input type="checkbox" name="sw" id="bread" value="마늘빵" />
+                  마늘빵
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="gogi">
+                  <input type="checkbox" name="ko" id="gogi" value="불고기" />
+                  불고기
+                </label>
+              </td>
+
+              <td>
+                <label for="pizza">
+                  <input type="checkbox" name="en" id="pizza" value="피자" />
+                  피자
+                </label>
+              </td>
+
+              <td>
+                <label for="juice">
+                  <input type="checkbox" name="sw" id="juice" value="주스" />
+                  주스
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="jap">
+                  <input type="checkbox" name="ko" id="jap" value="잡채" /> 잡채
+                </label>
+              </td>
+
+              <td>
+                <label for="ham">
+                  <input type="checkbox" name="en" id="ham" value="햄버거" />
+                  햄버거
+                </label>
+              </td>
+
+              <td>
+                <label for="cookie">
+                  <input type="checkbox" name="sw" id="cookie" value="쿠키" />
+                  쿠키
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="bob">
+                  <input type="checkbox" name="ko" id="bob" value="볶음밥" />
+                  볶음밥
+                </label>
+              </td>
+
+              <td>
+                <label for="spage">
+                  <input
+                    type="checkbox"
+                    name="en"
+                    id="spage"
+                    value="스파게티"
+                  />
+                  스파게티
+                </label>
+              </td>
+
+              <td>
+                <label for="ice">
+                  <input
+                    type="checkbox"
+                    name="sw"
+                    id="ice"
+                    value="아이스크림"
+                  />
+                  아이스크림
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <button id="next">진행하기</button>
+    <script>
+      console.log(document.getElementById(`ice`).value);
+      const root = document.getElementById("root");
+      const next = document.getElementById("next");
+      next.addEventListener("click", toCafe);
+      function toCafe() {
+        window.location.href = "./cafe.html";
+      }
+      //checkbox 3개까지 선택
+      let check = document.getElementsByTagName("input");
+      console.dir(check);
+      for (let i = 0; i < check.length; i++) {
+        check[i].addEventListener("click", checkcount);
+      }
+
+      function checkcount() {
+        let count = 0;
+        for (let i = 0; i < check.length; i++) {
+          if (check[i].checked) {
+            count++;
+          }
+          if (count > 3) {
+            alert("3개까지 선택할 수 있습니다.");
+            this.checked = false;
+            return false;
+            break;
+          }
+        }
+        console.log(count);
+      }
+    </script>
+  </body>
+</html>

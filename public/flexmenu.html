@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="day"></div>
+    <div id="menuselect"></div>
+  </body>
+  <script>
+    const day = document.getElementById("day");
+    const menuselect = document.getElementById("menuselect");
+    //반복문 day col
+    function a() {
+      for (let i = 0; i < 4; i++) {
+        const dayDiv = document.createElement("div");
+        day.appendChild(dayDiv);
+        dayDiv.style.width = "50vw";
+        dayDiv.innerHTML = `1`;
+        day.children[0].innerHTML = "";
+        dayDiv.style.height = "10vw";
+        dayDiv.style.border = "solid black";
+      }
+      for (let j = 0; j < 7; j++) {
+        const dayDiv2 = document.createElement("div");
+        day.dayDiv.appendChild(dayDiv2);
+        dayDiv2.style.flexDirection = "row";
+        dayDiv2.style.width = "10vw";
+        dayDiv2.style.height = "10vw";
+        dayDiv2.style.border = "solid black";
+        dayDiv2.innerHTML = `${j + 1}`;
+      }
+    }
+    a();
+    //flex로 테이블 만드는 것은 힘들다.
+    //grid로 넘어가보자..
+  </script>
+</html>
