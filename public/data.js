@@ -32,3 +32,12 @@ export const nameArr = [
   "스파게티",
   "아이스크림",
 ];
+
+// const db =
+//   day1: [],
+//   day2: [],
+//   day3: [],
+
+// const db2 = {
+//   []
+// }

@@ -21,11 +21,11 @@ for (let i = 1; i < 7; i++) {
   dayDiv.innerText = `2.${i}`;
   day.children[0].innerText = "";
 }
-//dat div 생성 - 식단표
+//day div 생성 - 식단표
 for (let i = 0; i < 19; i++) {
   const dayDiv = document.createElement("div");
   day.appendChild(dayDiv);
-  dayDiv.id = [i];
+  dayDiv.id = `div${[i]}`;
   day.children[7].innerText = "메뉴";
   day.children[7].style.gridRow = "2/5";
 }
@@ -34,7 +34,7 @@ for (let i = 0; i < 19; i++) {
 const totalArr = [];
 for (let i = 0; i < 16; i++) {
   totalArr.push(
-    `<label for="${idArr[i]}"> <input type="checkbox" name="${idArr[i]}" value="${nameArr[i]}" />${nameArr[i]}</label>`
+    `<label for="${idArr[i]}"> <input type="checkbox" name="${idArr[i]}" value="${nameArr[i]}" id = "${idArr[i]}" />${nameArr[i]}</label>`
   );
 }
 
@@ -56,61 +56,119 @@ for (let i = 0; i < 15; i++) {
 }
 
 //checkbox 3개까지 선택
+let label = document.getElementsByTagName("label");
 let check = document.getElementsByTagName("input");
-// console.log(check[0].value);
-console.log(check.value);
-console.dir(check);
 for (let i = 0; i < check.length; i++) {
   check[i].addEventListener("click", checkcount);
 }
-
-function checkcount() {
+function checkcount(event) {
   let count = 0;
+  //check 3개 선택
   for (let i = 0; i < check.length; i++) {
     if (check[i].checked) {
       count++;
-    }
-    if (count > 3) {
+    } else if (count > 3) {
       alert("3개까지 선택할 수 있습니다.");
       this.checked = false;
       return false;
     }
   }
-  console.log(count);
+
+  //check된 값 day에 반영
+
+  // console.log(check);
+  // console.log(check[0].checked);
+  // console.log(event.target.value);
+  // if (check.checked) {
+  //   foodArr.push(event.target.value);
+  //   console.log(2);
+  //   isSelected = true;
+  // } else {
+  //   console.log(1);
+  //   foodArr.push(event.target.value);
+  // }
+  // console.log(isSelected);
+  // switch (isSelected) {
+  //   case 0:
+  //     console.log(3);
+  //     foodArr.push(event.target.value);
+  //     console.log(foodArr);
+  //     break;
+  //   default:
+  //     console.log(2);
+  //     isSelected = 0;
+  //     foodArr.push(event.target.value);
+  //     console.log(foodArr);
+  // }
+  if (event.target.checked) {
+    if (isSelected) {
+      console.log(3);
+      foodArr.push(event.target.value);
+      console.log(foodArr);
+      console.log(event.target.checked);
+      isSelected = "";
+    } else {
+      console.log(2);
+      isSelected = event.target.value;
+      foodArr.push(event.target.value);
+      console.log(event.target.checked);
+      console.log(foodArr);
+    }
+  } else {
+    foodArr.pop();
+    // foodArr.forEach(function () {});
+    // if (event.target.value === foodArr)
+    // foodArr.splice(`${i}`, 1)
+    console.log("false");
+  }
+  // if ((count = 1)) {
+  //   div1.innerHTML = foodArr[0];
+  //   div7.innerHTML = "";
+  //   div13.innerHTML = "";
+  //   // if ((count = 2)) {
+  //   //   div7.innerHTML = foodArr[1];
+  //   //   div13.innerHTML = " ";
+  //   //   if ((count = 3)) {
+  //   //     div13.innerHTML = foodArr[2];
+  //   //   }
+  //   // }
+  // }
+  switch (count) {
+    // case 0:
+    //   console.log("dlrp dho?");
+    //   div1.innerHTML = "";
+    case 1:
+      div1.innerHTML = foodArr[0];
+      div7.innerHTML = "";
+
+      break;
+    case 2:
+      div7.innerHTML = foodArr[1];
+      div13.innerHTML = "";
+      break;
+    case 3:
+      div13.innerHTML = foodArr[2];
+      break;
+    default:
+      div1.innerHTML = "";
+  }
 }
 
-//vaule check
-for (let i = 0; i < 16; i++) {
-  menu.addEventListener("click", valueCheck);
-  function valueCheck(e) {
-    e.target.style.backgroundColor = "black";
-  }
-  // let count = 0;
-  // menu.addEventListener("click", (e) => {
-  //   if ((count = 0)) {
-  //     if (e.target) {
-  //       console.dir(e.target.value);
-  //       count++;
-  //       day.children[8].innerHTML = e.target.value;
-  //       day.children[8].innerHTML = "";
-  //     } else {
-  //     }
-  //   } else if ((count = 1)) {
-  //     if (e.target) {
-  //       console.dir(e.target.value);
-  //       count++;
-  //       day.children[14].innerHTML = e.target.value;
-  //     } else {
-  //       day.children[14].innerHTML = "";
-  //     }
-  //   } else if ((count = 2)) {
-  //     if (e.target) {
-  //       console.dir(e.target.value);
-  //       count++;
-  //       day.children[20].innerHTML = e.target.value;
-  //     } else {
-  //       day.children[20].innerHTML = "";
-  //     }
-  //   }
-  // });
-}
+let isSelected;
+let foodArr = [];
+
+// if (check.checked == true) {
+//   // console.log(check[i].checked);
+//   div1.innerText = "선택";
+//   // selected = e.target;
+//   // console.log(count);
+// }
+// // if (selected.checked == true && count === 2) {
+// //   div1.innerText = selected.value;
+// //   div7.innerText = e.target.value;
+// //   div7.style.backgroundColor = "yellow";
+// //   console.log(count);
+// // }
+// // if (selected.checked == true && count === 3) {
+// //   console.log(count);
+// // }
